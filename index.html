@@ -2,11 +2,36 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <tittle>Etch-a-Sketch</tittle>
+        <title>Etch-a-Sketch</title>
         <link rel="stylesheet" href="./style.css">
         <script src="./script.js" defer></script>
     </head>
     <body>
-        
+        <div class="header">
+            <div class="title">Etch-a-Sketch</div>
+        </div>
+        <div class="content">
+            <div class="select-size">
+                <button class="size-btn">Select Size</button>
+            </div>
+            <div class="etch">
+                <div class="grid"></div>
+            </div>
+            <div class="color-selection">
+                <div class="color-selection-header">Color and Eraser Picker</div>
+                <div class="selections">
+                    <div class="btn"><button id="black" class="color-btn">Black</button></div>
+                    <div class="btn"><button id="blue" class="color-btn">Blue</button></div>
+                    <div class="btn"><button id="red" class="color-btn">Red</button></div>
+                    <div class="btn"><button id="eraser" class="color-btn">Eraser</button></div>
+                </div>
+                <div class="reset">
+                    <button class="reset-btn">Reset Pad</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-text">&copy 2024 Conde</div>
+        </div>
     </body>
 </html>

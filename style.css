@@ -1,7 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Platypi:wght@450');
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    overflow: hidden;
+    oudtline: 2px solid red;
+    font-family: 'Platypi', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #003135;
+    color: #afdde5;
+}
+.title {
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.etch {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    doutline: 6px solid #0fa4af;
+    border: 6px solid #0fa4af;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    width: 10px;
+    height: 10px;
+}
+
+.color-selection {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    height: auto;
+    gap: 2rem;
+}
+
+.color-selection-header {
+    color: #964734;
+
+}
+
+.selections {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.color-btn, .reset-btn, .size-btn {
+    padding: 6px;
+    min-width: 50px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.btn-clicked {
+    background-color: #000;
+    color: #fff;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #003135;
+    color: #afdde5;
+}
+
+.footer-text {
+    font-size: 12px;
+    text-transform: uppercase;
 }
