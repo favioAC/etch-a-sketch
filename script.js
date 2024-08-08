@@ -1,69 +1,101 @@
+function addBtnEvent () {
+    colorBtn.forEach(btn => btn.addEventListener('mousedown', colorPicker));
+    resetBtn.addEventListener('mousedown', resetPad);
+    sizeBtn.addEventListener('mousedown', changePadSize);
+}
 
-
-function createSquares(number) {
-    for (let i = 0; i < (numberOfSquare**0.5); i++) {
-        const row = document.createElement('div');
-        row.classList.add('row', 'square');
-        grid.appendChild(row);
-        
-        for (let j = 0; j< (numberOfSquare**0.5); j++) {
-            const column = document.createElement('div');
-            column.classList.add('column', 'square');
-            row.appendChild(column);
+function createGrid (squarePerSide) {
+    if (!userSizeSelection) {
+        squarePerSide = size;
+        for (let i = 0; i < squarePerSide; i++) {
+            const row = document.createElement('div');
+            row.classList.add('row');
+            for (let j = 0; j < squarePerSide; j++) {
+                const square = document.createElement('div');
+                square.classList.add('square');
+                row.appendChild(square);
+            }
+            grid.appendChild(row);
         }
+    } else {
+        squarePerSide = userSizeSelection;
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
+        }
+        for (let i = 0; i < squarePerSide; i++) {
+            const row = document.createElement('div');
+            row.classList.add('row');
+            for (let j = 0; j < squarePerSide; j++) {
+                const square = document.createElement('div');
+                square.classList.add('square');
+                row.appendChild(square);
+            }
+            grid.appendChild(row);
+        }
+        squares = Array.from(document.querySelectorAll('.square'));
     }
+    
 }
 
-function addListener () {
-    btn.forEach(btn => btn.addEventListener('mousedown', mouseUp));
-}
-
-function mouseUp () {
+function changePadSize () {
     this.classList.add('btn-clicked');
     this.addEventListener('mouseup', (e) => this.classList.remove('btn-clicked'));
     this.addEventListener('mouseleave', (e) => this.classList.remove('btn-clicked'));
-    colorPicker(this.id);
+    
+    userSizeSelection = Number(prompt('Enter the number of squares per side for the new grid:'));
+    createGrid(userSizeSelection);
+    addHover ();
 }
 
-function colorPicker(pick) {
-    color = pick === 'eraser' ? '#fff'
-        : pick === 'black' ? '#000'
-        : pick === 'blue' ? '#0000ff'
-        : '#ff0000';
+function colorPicker () {
+    this.classList.add('btn-clicked');
+    this.addEventListener('mouseup', (e) => this.classList.remove('btn-clicked'));
+    this.addEventListener('mouseleave', (e) => this.classList.remove('btn-clicked'));
+
+    color = this.id === 'black' ? '#000'
+        : this.id === 'blue' ? '#0000ff'
+        : this.id === 'red' ? '#ff0000'
+        : '#fff';
+    //console.log(color);
 }
 
 function addHover () {
-    square.forEach(square => square.addEventListener('mouseenter', sketch));
-}
-
-function sketch (square) {
-    this.style.backgroundColor = color;
-}
-
-function getPadSize () {
+    squares.forEach(square => square.addEventListener('mouseenter', (e) => {
+        square.style.backgroundColor = color;
+        // console.log('hover is working');
+    }));
     
 }
 
 function resetPad () {
-    square.forEach(square => square.style.backgroundColor = '#fff');
+    // console.log('Reset working');
+    this.classList.add('btn-clicked');
+    this.addEventListener('mouseup', (e) => this.classList.remove('btn-clicked'));
+    this.addEventListener('mouseleave', (e) => this.classList.remove('btn-clicked'));
+    
+    squares.forEach(square => square.style.backgroundColor = '#fff');
     color = '#fff';
+
+    userSizeSelection = size;
+    createGrid (userSizeSelection);
+    addHover ();
 }
 
-let numberOfSquare = 2401;
+
+
+const etch = document.querySelector('etch');
+const grid = document.querySelector('.grid');
+const sizeBtn = document.querySelector('.size-btn');
+const colorBtn = Array.from(document.querySelectorAll('.color-btn'));
+const resetBtn = document.querySelector('.reset-btn');
+
+let size = 50;
+let userSizeSelection = 0;
 let color = '';
 
-const size = document.querySelector('.size-btn');
-size.addEventListener('click', getPadSize)
+createGrid (size);
 
-const grid = document.querySelector('.grid');
-const btn = Array.from(document.querySelectorAll('.color-btn'));
+let squares = Array.from(document.querySelectorAll('.square'));
 
-const reset = document.querySelector('.reset-btn');
-reset.addEventListener('click', resetPad)
-
-createSquares(numberOfSquare);
-
-const square = Array.from(document.querySelectorAll('.column.square'));
-
-addListener ();
+addBtnEvent ();
 addHover ();
