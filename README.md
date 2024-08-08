@@ -1,1 +1,3 @@
-# etch-a-sketch
+This was the second JavaScript project in The Odin Project which focused on DOM manipulation.  For this project, I had to make an Etch-a-Sketch that allows the user to select colors and resize the pad.  The project can be found on https://www.theodinproject.com/lessons/foundations-etch-a-sketch.
+
+I used only information covered in the course.  The project included a lot of functions and event listeners.  This project was a lot of fun.
